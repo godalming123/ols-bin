@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v5
+      - name: "Generate build artifact"
+        run: ./generate-artifacts.sh
+      - name: "Publish release"
+        run: gh release create "latest/$(date -u '+%Y-%m-%d')" ./build/*
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
