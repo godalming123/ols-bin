@@ -2,7 +2,7 @@ FROM debian:latest
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get install -y git gcc-aarch64-linux-gnu g++-aarch64-linux-gnu lld curl unzip clang
-RUN curl --location https://github.com/odin-lang/Odin/releases/download/dev-2025-08/odin-linux-amd64-dev-2025-08.zip -o odin.zip
+RUN curl --location https://github.com/odin-lang/Odin/releases/download/dev-2025-09/odin-linux-amd64-dev-2025-09.zip -o odin.zip
 RUN unzip odin.zip -d .
 RUN tar -xzf dist.tar.gz -C /usr/bin --strip-components 1
 RUN git clone https://github.com/DanielGavin/ols.git
